@@ -1,7 +1,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     try {
-      var hiddenField = document.getElementById('registrant-c_5542292'); //change the ID to the form field that you want to place the cookie value
+      var hiddenField = document.getElementById('registrant-c_5542264'); // change the ID to the hidden form field used to store the HubSpot user token
       if (hiddenField) {
         function getCookie(name) {
           var nameEQ = name + "=";
@@ -14,9 +14,17 @@
           }
           return null;
         }
+
         var cookieValue = getCookie('hubspotutk');
-        if (cookieValue && /^[a-zA-Z0-9]+$/.test(cookieValue)) {
-          hiddenField.value = cookieValue;
+        if (cookieValue) {
+          try { cookieValue = decodeURIComponent(cookieValue); } catch (e) {}
+
+          // Allow either 32-char hex or GUID with hyphens
+          var utkPattern = /^([0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i;
+
+          if (utkPattern.test(cookieValue)) {
+            hiddenField.value = cookieValue;
+          }
         }
       }
     } catch (error) {

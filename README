@@ -1,2 +1,21 @@
-1.Update the ID of the form field that you need to add the cooke value (see comment in code.
-2. Add to page header or footer.
+This script inserts the hubspotutk cookie value into a form field so that it can be collected as part of the contact information.
+
+You can then use the hubspot integration settings in swoogo to map the field to hubspot.
+
+1.In your swoogo account, make sure you gave enabled analytics.
+2.In each event you will also need to enable the hubspot tracking code.
+3.Add a text field to your swoogo account where you will collect the hubspotutk value (use a field name like hubspot_utk)
+4.Add the field to an event.
+5.View the field in web developer tools and find the ID of the field This might look like registrant-c_1234567
+6.Add CSS to your theme template to hide the field, using the correct field ID e.g.
+
+/* This is used to hide the hubspot_utk field from view */
+.form-group.highlight-addon.field-registrant-c_1234567 {
+display: none;
+}
+
+7. Update the ID of the form field in the javascript that you need to add the cooke value (see comment in code.
+8. Create a javascript snippet from the main menu in swoogo account. Name it the same as your field name for ease e.g. hubspot_utk
+9. In your event settings go to website settings and to the settings for the page where the field is displayed. 
+10. Edit the settings. Go to the advanced settings at the bottom. Check the box for the javascript snippet you created earlier and save.
+11. test

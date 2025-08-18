@@ -1,7 +1,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     try {
-      var hiddenField = document.getElementById('registrant-c_5542264'); // change the ID to the hidden form field used to store the HubSpot user token
+      var hiddenField = document.getElementById('registrant-c_5542264'); // change the value to the hidden form field used to store the HubSpot user token
       if (hiddenField) {
         function getCookie(name) {
           var nameEQ = name + "=";
